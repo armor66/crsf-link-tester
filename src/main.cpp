@@ -71,8 +71,8 @@ void setup() {
 			}
 			if (channel_data_ptr != nullptr) {
 				crsf_channels_t * c = channel_data_ptr;
-				uint32_t channel_data [] = {c->ch0, c->ch1, c->ch2, c->ch3, c->ch4, c->ch5, c->ch6, c->ch7, c->ch8, c->ch9};
-				UI_setChannels10(channel_data);
+				uint32_t channel_data [] = {c->ch0, c->ch1, c->ch2, c->ch3, c->ch4, c->ch5, c->ch6, c->ch7, c->ch8, c->ch9, c->ch10, c->ch11};
+				UI_setChannels12(channel_data);
 				channel_data_ptr = nullptr;
 			}
 			if (queued_packet_results > 0) {

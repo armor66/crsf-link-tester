@@ -5,7 +5,7 @@ static const uint8_t LINKSTAT_FRAME_START_SEQ [] = {CRSF_ADDRESS_FLIGHT_CONTROLL
 static const uint8_t CHANNEL_DATA_FRAME_START_SEQ [] = {CRSF_ADDRESS_FLIGHT_CONTROLLER, 22+2, CRSF_FRAMETYPE_RC_CHANNELS_PACKED};
 
 static const int tx_power_to_milliwats [] = {0, 10, 25, 100, -1, -1 -1, 250};
-static const int rfmd_to_link_rate_elrs [] = {4, 25, 50, 100, 150, 200, 250, 500};
+static const int rfmd_to_link_rate_elrs [] = {0, 1, 50, 3, 100, 150, 6, 250, 333, 500, 1250, 1500, 2500, 3000};	//{4, 25, 50, 100, 150, 200, 250, 500}
 static const int rfmd_to_link_rate_tbs [] = {4, 50, 150};
 static const int rfmd_dbm_sensitivity [] = {125, 123, 120, 117, 112, 112, 108, 105}; // expresslrs
 static const int * rfmd_to_link_rate;

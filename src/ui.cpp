@@ -20,6 +20,8 @@ static TFT_eSprite ch7_text(&M5.Lcd);
 static TFT_eSprite ch8_text(&M5.Lcd);
 static TFT_eSprite ch9_text(&M5.Lcd);
 static TFT_eSprite ch10_text(&M5.Lcd);
+static TFT_eSprite ch11_text(&M5.Lcd);
+static TFT_eSprite ch12_text(&M5.Lcd);
 
 static TFT_eSprite ch1_bar(&M5.Lcd);
 static TFT_eSprite ch2_bar(&M5.Lcd);
@@ -31,22 +33,24 @@ static TFT_eSprite ch7_bar(&M5.Lcd);
 static TFT_eSprite ch8_bar(&M5.Lcd);
 static TFT_eSprite ch9_bar(&M5.Lcd);
 static TFT_eSprite ch10_bar(&M5.Lcd);
+static TFT_eSprite ch11_bar(&M5.Lcd);
+static TFT_eSprite ch12_bar(&M5.Lcd);
 
 static uint32_t packet_counter = 0;
 
 static const TFT_eSprite * channel_texts [] = {
-	&ch1_text, &ch2_text, &ch3_text, &ch4_text, &ch5_text, &ch6_text, &ch7_text, &ch8_text, &ch9_text, &ch10_text
+	&ch1_text, &ch2_text, &ch3_text, &ch4_text, &ch5_text, &ch6_text, &ch7_text, &ch8_text, &ch9_text, &ch10_text, &ch11_text, &ch12_text
 };
 
 static const TFT_eSprite * channel_bars [] = {
-	&ch1_bar, &ch2_bar, &ch3_bar, &ch4_bar, &ch5_bar, &ch6_bar, &ch7_bar, &ch8_bar, &ch9_bar, &ch10_bar
+	&ch1_bar, &ch2_bar, &ch3_bar, &ch4_bar, &ch5_bar, &ch6_bar, &ch7_bar, &ch8_bar, &ch9_bar, &ch10_bar, &ch11_bar, &ch12_bar
 };
 
 static int rssi_scale_min = 120;
 static int rssi_scale_max = 50;
 
 // remember last values to prevent unnecessary sprite updates
-static int current_rc_channels_data [10] = {0};
+static int current_rc_channels_data [12] = {0};
 static int current_rssi = -1;
 static int current_lq = -1;
 static int current_pw = -1;
@@ -76,9 +80,9 @@ void UI_setup() {
 	createElement(lq_bar, 2, 200, 20, TFT_GREENYELLOW);
 	createElement(tx_pwr_text, 2, 100, 20, TFT_DARKGREY);
 	createElement(link_rate_text, 2, 100, 20, TFT_DARKGREY);
-	createElement(rx_frame_indicator_bar, 4, 200, 50, TFT_ORANGE);
+	createElement(rx_frame_indicator_bar, 4, 200, 40, TFT_ORANGE);
 	rx_frame_indicator_bar.setScrollRect(0, 0, rx_frame_indicator_bar.width(), rx_frame_indicator_bar.height(), TFT_BLACK);
-	for (uint8_t i=0; i < 10; i++) {
+	for (uint8_t i=0; i < 12; i++) {
 		createElement((TFT_eSprite&) *channel_texts[i], 1, 90, 10, TFT_WHITE);
 		createElement((TFT_eSprite&) *channel_bars[i], 1, 210, 9, TFT_LIGHTGREY);
 	}
@@ -130,7 +134,18 @@ void UI_setTxPwr(int value) {
 
 void UI_setLinkRate(int hz) {
 	clearSprite(link_rate_text);
-	link_rate_text.printf("PR %d", hz);
+	if(hz < 1000)
+	{
+		((hz == 100) || (hz == 333))? link_rate_text.printf("PR %dF", hz): link_rate_text.printf("PR %d", hz);
+	}
+	else if(hz > 2000)
+	{
+		link_rate_text.printf("PR F%d", (hz - 2000));
+	}
+	else
+	{
+		link_rate_text.printf("PR D%d", (hz - 1000));
+	}
 	link_rate_text.pushSprite(10, 100);
 }
 
@@ -139,15 +154,15 @@ void UI_setRssiScale(int dbm_min, int dbm_max) {
 	rssi_scale_max = dbm_max;
 }
 
-void UI_setChannels10(uint32_t * channel_data_10) {
-	for (uint8_t i=0; i < 10; i++) {
-		int value =  channel_data_10[i];
+void UI_setChannels12(uint32_t * channel_data_12) {
+	for (uint8_t i=0; i < 12; i++) {
+		int value =  channel_data_12[i];
 		// update graphics only if the current channel value is different from previous
 		if (value != current_rc_channels_data[i]) {
 			current_rc_channels_data[i] = value;
 			TFT_eSprite& text = (TFT_eSprite&) *channel_texts[i];
 			TFT_eSprite& bar = (TFT_eSprite&) *channel_bars[i];
-			int v_offset = 140 + 10 * i;
+			int v_offset = 120 + 10 * i;
 
 			clearSprite(text);
 			text.printf("CH%2d: %4d", i+1, value);
