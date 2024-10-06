@@ -5,7 +5,8 @@
 ##### Features
 Realtime graphical visualization of
 - RSSI, LQ, Link Rate and TX power
-- Up to 10 RC channels
+- Up to 12 RC channels
+- V3.x.x RF Mode Rates
 - Scrolling colored indicator of received, bad and missed packets 
 
 ##### User interface
