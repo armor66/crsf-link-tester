@@ -10,7 +10,7 @@ Realtime graphical visualization of
 - Scrolling colored indicator of received, bad and missed packets 
 
 ##### User interface
-![M5Core2 photo](https://i.ibb.co/XLLzwKn/crsf-tester-m5-photo.jpg)
+![M5Core2 photo](photos/crsf-tester-m5-photo.jpg)
 
 RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
 - LQ: Link quality bar
