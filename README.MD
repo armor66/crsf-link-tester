@@ -12,7 +12,7 @@ Realtime graphical visualization of
 ##### User interface
 ![M5Core2 photo](photos/crsf-tester-m5-photo.jpg)
 
-RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
+- RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
 - LQ: Link quality bar
 - PW: Current power of the transmitter, for ELRS works only in WIDE switch mode
 - PR: Current packet rate in Hz
