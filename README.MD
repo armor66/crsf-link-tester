@@ -5,19 +5,19 @@
 ##### Features
 Realtime graphical visualization of
 - RSSI, LQ, Link Rate and TX power
-- Up to 12 RC channels
+- Scrolling colored indicator of received, bad and missed packets
 - V3.x.x RF Mode Rates
-- Scrolling colored indicator of received, bad and missed packets 
+- Up to 12 RC channels
 
 ##### User interface
-![M5Core2 photo](https://i.ibb.co/XLLzwKn/crsf-tester-m5-photo.jpg)
+![M5Core2 photo](photos/crsf-tester-m5-photo.jpg)
 
-RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
+- RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
 - LQ: Link quality bar
 - PW: Current power of the transmitter, for ELRS works only in WIDE switch mode
-- PR: Current packet rate in Hz
-- Numeric values and graphical bars for 10 RC channels
 - Text and scrolling packet indicator: each vertical line reppresents a received (or not) RC packet:
+- PR: Current packet rate in Hz
+- Numeric values and graphical bars for 12 RC channels
  
 ![green](https://via.placeholder.com/15/0e0/000000?text=+) Good RC packet received
 
