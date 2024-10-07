@@ -5,9 +5,9 @@
 ##### Features
 Realtime graphical visualization of
 - RSSI, LQ, Link Rate and TX power
-- Up to 12 RC channels
+- Scrolling colored indicator of received, bad and missed packets
 - V3.x.x RF Mode Rates
-- Scrolling colored indicator of received, bad and missed packets 
+- Up to 12 RC channels
 
 ##### User interface
 ![M5Core2 photo](photos/crsf-tester-m5-photo.jpg)
