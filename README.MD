@@ -15,9 +15,9 @@ Realtime graphical visualization of
 - RSSI bar, minimum range is based on RX sensitivity for given packet rate (ELRS)
 - LQ: Link quality bar
 - PW: Current power of the transmitter, for ELRS works only in WIDE switch mode
-- PR: Current packet rate in Hz
-- Numeric values and graphical bars for 10 RC channels
 - Text and scrolling packet indicator: each vertical line reppresents a received (or not) RC packet:
+- PR: Current packet rate in Hz
+- Numeric values and graphical bars for 12 RC channels
  
 ![green](https://via.placeholder.com/15/0e0/000000?text=+) Good RC packet received
 
